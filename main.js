@@ -9,12 +9,18 @@ function getTodos() {
 }
 // POST REQUEST
 function addTodo() {
-   axios.post()
+  axios
+    .post("https://jsonplaceholder.typicode.com/todos", {
+      title: "New Todo",
+      complete: false
+    })
+    .then(res => showOutput(res))
+    .then(err => console.error(err));
 }
 
 // PUT/PATCH REQUEST
 function updateTodo() {
-  console.log("PUT/PATCH Request");
+  axios.pust 
 }
 
 // DELETE REQUEST

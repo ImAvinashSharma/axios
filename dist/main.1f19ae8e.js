@@ -2686,12 +2686,19 @@ function getTodos() {
 
 
 function addTodo() {
-  _axios.default.post();
+  _axios.default.post("https://jsonplaceholder.typicode.com/todos", {
+    title: "New Todo",
+    complete: false
+  }).then(function (res) {
+    return showOutput(res);
+  }).then(function (err) {
+    return console.error(err);
+  });
 } // PUT/PATCH REQUEST
 
 
 function updateTodo() {
-  console.log("PUT/PATCH Request");
+  _axios.default.pust;
 } // DELETE REQUEST
 
 
@@ -2769,7 +2776,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60244" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65256" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

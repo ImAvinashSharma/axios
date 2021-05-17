@@ -15,22 +15,37 @@ function addTodo() {
       complete: false
     })
     .then(res => showOutput(res))
-    .then(err => console.error(err));
+    .catch(err => console.error(err));
 }
 
 // PUT/PATCH REQUEST
 function updateTodo() {
-  axios.pust 
+  axios
+    .patch("https://jsonplaceholder.typicode.com/todos/1", {
+      title: "title",
+      complete: true
+    })
+    .then(res => showOutput(res))
+    .catch(err => console.error(err));
 }
 
 // DELETE REQUEST
 function removeTodo() {
-  console.log("DELETE Request");
+  axios
+    .delete("https://jsonplaceholder.typicode.com/todos/1")
+    .then(res => showOutput(res))
+    .catch(err => console.error(err));
 }
 
 // SIMULTANEOUS DATA
 function getData() {
-  console.log("Simultaneous Request");
+  axios
+    .all([
+      axios.get("https://jsonplaceholder.typicode.com/todos?_limit=5"),
+      axios.get("https://jsonplaceholder.typicode.com/posts?_limit=5")
+    ])
+    .then(axios.spread((todos, posts) => showOutput(posts)))
+    .catch(err => console.log(err));
 }
 
 // CUSTOM HEADERS

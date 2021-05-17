@@ -2691,24 +2691,39 @@ function addTodo() {
     complete: false
   }).then(function (res) {
     return showOutput(res);
-  }).then(function (err) {
+  }).catch(function (err) {
     return console.error(err);
   });
 } // PUT/PATCH REQUEST
 
 
 function updateTodo() {
-  _axios.default.pust;
+  _axios.default.patch("https://jsonplaceholder.typicode.com/todos/1", {
+    title: "title",
+    complete: true
+  }).then(function (res) {
+    return showOutput(res);
+  }).catch(function (err) {
+    return console.error(err);
+  });
 } // DELETE REQUEST
 
 
 function removeTodo() {
-  console.log("DELETE Request");
+  _axios.default.delete("https://jsonplaceholder.typicode.com/todos/1").then(function (res) {
+    return showOutput(res);
+  }).catch(function (err) {
+    return console.error(err);
+  });
 } // SIMULTANEOUS DATA
 
 
 function getData() {
-  console.log("Simultaneous Request");
+  _axios.default.all([_axios.default.get("https://jsonplaceholder.typicode.com/todos?_limit=5"), _axios.default.get("https://jsonplaceholder.typicode.com/posts?_limit=5")]).then(_axios.default.spread(function (todos, posts) {
+    return showOutput(posts);
+  })).catch(function (err) {
+    return console.log(err);
+  });
 } // CUSTOM HEADERS
 
 
@@ -2776,7 +2791,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65256" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54806" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
